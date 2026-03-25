@@ -13,7 +13,7 @@ class Flux2Flex(io.ComfyNode):
     def define_schema(cls):
         return io.Schema(
             node_id="Flux2Flex_BFL",
-            display_name="FLUX.2 [Flex] (BFL)",
+            display_name="FLUX.2 [Flex]",
             category="BFL/FLUX.2",
             description="Generate or edit images via FLUX.2 [Flex] API with guidance and steps control",
             inputs=[

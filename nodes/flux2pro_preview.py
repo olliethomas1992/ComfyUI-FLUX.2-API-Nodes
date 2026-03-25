@@ -13,7 +13,7 @@ class Flux2ProPreview(io.ComfyNode):
     def define_schema(cls):
         return io.Schema(
             node_id="Flux2ProPreview_BFL",
-            display_name="FLUX.2 [Pro] Preview (BFL)",
+            display_name="FLUX.2 [Pro] Preview",
             category="BFL/FLUX.2",
             description="Generate or edit images via FLUX.2 [Pro] Preview API with up to 8 reference images",
             inputs=[

@@ -13,7 +13,7 @@ class Flux2Max(io.ComfyNode):
     def define_schema(cls):
         return io.Schema(
             node_id="Flux2Max_BFL",
-            display_name="FLUX.2 [Max] (BFL)",
+            display_name="FLUX.2 [Max]",
             category="BFL/FLUX.2",
             description="Generate images via FLUX.2 [Max] API with up to 8 reference images",
             inputs=[

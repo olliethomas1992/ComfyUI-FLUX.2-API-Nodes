@@ -13,7 +13,7 @@ class Flux2Klein9B(io.ComfyNode):
     def define_schema(cls):
         return io.Schema(
             node_id="Flux2Klein9B_BFL",
-            display_name="FLUX.2 [Klein 9B] (BFL)",
+            display_name="FLUX.2 [Klein 9B]",
             category="BFL/FLUX.2",
             description="Generate or edit images via FLUX.2 [Klein 9B] API with up to 4 reference images",
             inputs=[
