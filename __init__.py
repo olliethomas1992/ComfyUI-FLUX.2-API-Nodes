@@ -6,6 +6,7 @@ from .nodes.flux2pro_preview import Flux2ProPreview
 from .nodes.flux2klein_direct import Flux2Klein9B
 from .nodes.flux2klein4b import Flux2Klein4B
 from .nodes.flux2klein9b_kv import Flux2Klein9BKV
+from .nodes.flux2flex import Flux2Flex
 from .nodes.config_node import FluxConfig
 
 
@@ -18,6 +19,7 @@ class BflFlux2Extension(ComfyExtension):
             Flux2Klein9B,
             Flux2Klein4B,
             Flux2Klein9BKV,
+            Flux2Flex,
             FluxConfig,
         ]
 

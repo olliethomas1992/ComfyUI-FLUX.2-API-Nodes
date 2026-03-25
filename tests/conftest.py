@@ -141,6 +141,7 @@ import nodes.flux2pro_preview  # noqa: E402
 import nodes.flux2klein_direct  # noqa: E402
 import nodes.flux2klein4b  # noqa: E402
 import nodes.flux2klein9b_kv  # noqa: E402
+import nodes.flux2flex  # noqa: E402
 
 # --- Fixtures ---
 import pytest  # noqa: E402

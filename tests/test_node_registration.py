@@ -130,6 +130,61 @@ def test_config_node_has_schema():
     assert schema.category == "BFL/Config"
 
 
+# ---------------------------------------------------------------------------
+# Flux2FlexInputs model: Flex (8 images, guidance, steps, prompt_upsampling)
+# ---------------------------------------------------------------------------
+
+class TestFlux2FlexNode:
+    """FLUX.2 [Flex] has its own schema: prompt_upsampling, guidance, steps, no transparent_bg."""
+
+    def test_schema_metadata(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        assert schema.node_id == "Flux2Flex_BFL"
+        assert schema.display_name == "FLUX.2 [Flex] (BFL)"
+        assert schema.category == "BFL/FLUX.2"
+
+    def test_has_8_image_inputs(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        image_inputs = [i for i in schema.inputs if hasattr(i, "id") and i.id.startswith("image_")]
+        assert len(image_inputs) == 8
+
+    def test_has_prompt_upsampling(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        pu = [i for i in schema.inputs if hasattr(i, "id") and i.id == "prompt_upsampling"]
+        assert len(pu) == 1
+
+    def test_has_guidance(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        g = [i for i in schema.inputs if hasattr(i, "id") and i.id == "guidance"]
+        assert len(g) == 1
+
+    def test_has_steps(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        s = [i for i in schema.inputs if hasattr(i, "id") and i.id == "steps"]
+        assert len(s) == 1
+
+    def test_no_disable_pup(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        dp = [i for i in schema.inputs if hasattr(i, "id") and i.id == "disable_pup"]
+        assert len(dp) == 0
+
+    def test_no_transparent_bg(self):
+        from nodes.flux2flex import Flux2Flex
+        schema = Flux2Flex.define_schema()
+        tbg = [i for i in schema.inputs if hasattr(i, "id") and i.id == "transparent_bg"]
+        assert len(tbg) == 0
+
+    def test_execute_is_classmethod(self):
+        from nodes.flux2flex import Flux2Flex
+        assert isinstance(Flux2Flex.__dict__["execute"], classmethod)
+
+
 def test_all_nodes_have_config_input():
     """Every generation node should accept an optional BFL_CONFIG input."""
     import importlib
@@ -140,6 +195,7 @@ def test_all_nodes_have_config_input():
         ("nodes.flux2klein_direct", "Flux2Klein9B"),
         ("nodes.flux2klein4b", "Flux2Klein4B"),
         ("nodes.flux2klein9b_kv", "Flux2Klein9BKV"),
+        ("nodes.flux2flex", "Flux2Flex"),
     ]
     for module, cls_name in all_nodes:
         mod = importlib.import_module(module)
